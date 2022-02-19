@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DD9478B4-E1AE-4885-BE69-2512C60D3BBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F55DA16A-2594-4BBE-A28A-3EF3A4FCD33F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{49B99480-96FC-4452-BEE1-4685C9660521}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Dockerfile = Dockerfile
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToxiCode.BuyIt.Logistics.Ui", "src\ToxiCode.BuyIt.Logistics.Ui\ToxiCode.BuyIt.Logistics.Ui.csproj", "{00D7D7D1-2A18-47EE-8541-614FD950E20A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToxiCode.BuyIt.Logistics.Ui.Tests", "tests\ToxiCode.BuyIt.Logistics.Ui.Tests\ToxiCode.BuyIt.Logistics.Ui.Tests.csproj", "{16C3B440-21CB-4C4C-B123-F2F60AD8B95A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00D7D7D1-2A18-47EE-8541-614FD950E20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D7D7D1-2A18-47EE-8541-614FD950E20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D7D7D1-2A18-47EE-8541-614FD950E20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D7D7D1-2A18-47EE-8541-614FD950E20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C3B440-21CB-4C4C-B123-F2F60AD8B95A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C3B440-21CB-4C4C-B123-F2F60AD8B95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C3B440-21CB-4C4C-B123-F2F60AD8B95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C3B440-21CB-4C4C-B123-F2F60AD8B95A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00D7D7D1-2A18-47EE-8541-614FD950E20A} = {DD9478B4-E1AE-4885-BE69-2512C60D3BBB}
+		{16C3B440-21CB-4C4C-B123-F2F60AD8B95A} = {F55DA16A-2594-4BBE-A28A-3EF3A4FCD33F}
+	EndGlobalSection
+EndGlobal
