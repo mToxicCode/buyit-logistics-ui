@@ -1,31 +1,20 @@
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using ToxiCode.BuyIt.Logistics.Ui;
+// Console.WriteLine('\n');
 #region Services
 
-///////////////////////////////////////////////////////
-// Application services/DI Container configures ///////
-///////////////////////////////////////////////////////
-
-var builder = WebApplication.CreateBuilder(args);
-var services = builder.Services;
-
-services.AddRazorPages();
-services.AddServerSideBlazor();
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
+builder.RootComponents.Add<HeadOutlet>("head::after");
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 #endregion
 
 #region App
 
-///////////////////////////////////////////////////////
-// Application middlewares and entrypoint /////////////
-///////////////////////////////////////////////////////
-
-var app = builder.Build();
-
-if (!app.Environment.IsDevelopment())
-    app.UseExceptionHandler("/Error");
-app.UseStaticFiles();
-app.UseRouting();
-app.MapBlazorHub();
-app.MapFallbackToPage("/_Host");
-app.Run();
+await builder
+    .Build()
+    .RunAsync();
 
 #endregion

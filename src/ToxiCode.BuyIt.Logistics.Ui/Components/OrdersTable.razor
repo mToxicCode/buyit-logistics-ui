@@ -1,0 +1,36 @@
+﻿@using System.Diagnostics.CodeAnalysis
+@using System.Runtime.CompilerServices
+@using ToxiCode.BuyIt.Logistics.Ui.Models
+@using System.Collections.ObjectModel
+@namespace OrdersComponents
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var (key, order) in Orders)
+    {
+        <tr>
+            <th scope="row">
+                <a href="/OrderById/@key">@order.Id</a>
+            </th>
+            <td>@order.Name</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+
+
+
+
+@code {
+    [Parameter]
+    public IDictionary<long, Order> Orders { get; set; } = new Dictionary<long, Order>();
+}

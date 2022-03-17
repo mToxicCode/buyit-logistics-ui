@@ -1,0 +1,30 @@
+﻿.header {
+    border-bottom: 1px solid #f5f5f5;
+    background-color: #bae8e8;
+}
+
+.header__inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*align-items: baseline;*/
+    height: 100px;
+    line-height: 50px;
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.topnav__link {
+    /*margin: 0 auto;*/
+    font-weight: bold;
+    font-size: x-large;
+    color: #1c1c1c;
+    text-decoration: none;
+}
+
+.topnav__link:hover {
+    text-decoration: underline;
+}

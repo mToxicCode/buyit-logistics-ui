@@ -1,0 +1,17 @@
+﻿@page "/OrderById/{Id:long}"
+@using ToxiCode.BuyIt.Logistics.Ui.Models
+@namespace OrdersComponents
+
+<div class="container d-block">
+    <ItemsInOrderTable Order="Orders[Id]"/>
+</div>
+
+@code {
+
+    [Parameter]
+    public long Id { get; set; }
+
+    [Parameter]
+    public IDictionary<long, Order> Orders { get; set; } = Mock.GetOrdersMock();
+    
+}

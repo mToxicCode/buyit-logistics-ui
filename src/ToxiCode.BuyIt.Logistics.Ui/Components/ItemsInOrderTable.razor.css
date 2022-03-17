@@ -1,0 +1,7 @@
+﻿.raz {
+    -moz-appearance: textfield;
+    width: 200px!important;
+}
+.raz::-webkit-inner-spin-button {
+    display: none;
+}

@@ -1,0 +1,45 @@
+﻿@using ToxiCode.BuyIt.Logistics.Ui.Models
+@using System.Runtime.CompilerServices
+@namespace OrdersComponents
+
+<div>
+    <form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Product in stock</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var (key, value) in Order.Items)
+            {
+                <tr>
+                    <th scope="row">@key</th>
+                    <td>@value.Item.Name</td>
+                    <td>@value.Item.Cost</td>
+                    <td>@value.Quantity</td>
+                    <td>
+                        <input type="number"
+                               min="0"
+                               max="@value.Quantity"
+                               id="@key"
+                               class="form-control raz">
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <input type="submit" class="btn btn-success">
+    </form>
+</div>
+
+
+@code {
+    [Parameter]
+    public Order Order { get; set; } = null!;
+
+}
