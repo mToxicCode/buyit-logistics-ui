@@ -1,0 +1,46 @@
+@namespace ToxiCode.BuyIt.Logistics.Ui.Components
+@using ToxiCode.BuyIt.Logistics.Ui.Models
+@using ToxiCode.BuyIt.Logistics.Ui.Services.Abstractions
+@inject IItemService _itemService;
+
+<h3>Items Table</h3>
+
+<div>
+    <form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Avalible count</th>
+                <th scope="col">Last change date</th>
+                <th scope="col">Creation date</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in _items)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.ItemName</td>
+                    <td>@item.AvailableCount</td>
+                    <td>@item.ChangedAt</td>
+                    <td>@item.CreationDate</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </form>
+</div>
+
+@code {
+    private List<ItemDto> _items = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await _itemService.GetItems();
+        if (result != null)
+            _items = (List<ItemDto>) result;
+    }
+
+}

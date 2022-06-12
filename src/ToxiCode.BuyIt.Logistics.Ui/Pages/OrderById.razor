@@ -1,0 +1,12 @@
+@page "/OrderById/{OrderId:long}"
+@namespace ToxiCode.BuyIt.Logistics.Ui.Pages
+@using ToxiCode.BuyIt.Logistics.Ui.Components
+
+<ItemsInOrderTable OrderId="@OrderId"/>
+
+@code {
+
+    [Parameter]
+    public long OrderId { get; set; }
+
+}

@@ -1,0 +1,14 @@
+@page "/OrdersByBuyerId/{BuyerId}"
+@namespace ToxiCode.BuyIt.Logistics.Ui.Pages
+@using ToxiCode.BuyIt.Logistics.Ui.Components
+
+
+<BuyerOrdersTable BuyerId="@BuyerId"/>
+
+
+@code {
+
+        [Parameter]
+        public string BuyerId { get; set; } = null!;
+
+}

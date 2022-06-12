@@ -1,6 +1,10 @@
-﻿@using ToxiCode.BuyIt.Logistics.Ui.Models
-@using System.Runtime.CompilerServices
-@namespace OrdersComponents
+﻿@using ToxiCode.BuyIt.Logistics.Ui.Services.Abstractions
+@using ToxiCode.BuyIt.Logistics.Ui.Models
+@using ToxiCode.BuyIt.Logistics.Ui.Pages
+@namespace ToxiCode.BuyIt.Logistics.Ui.Components
+@inject IOrderService _orderService;
+
+<h3>@OrderId Table</h3>
 
 <div>
     <form>
@@ -9,37 +13,37 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
-                <th scope="col">Cost</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Product in stock</th>
+                <th scope="col">Count</th>
             </tr>
             </thead>
             <tbody>
-            @foreach (var (key, value) in Order.Items)
+            @if(_order.Items is not null)
+            {@foreach (var item in _order.Items)
             {
                 <tr>
-                    <th scope="row">@key</th>
-                    <td>@value.Item.Name</td>
-                    <td>@value.Item.Cost</td>
-                    <td>@value.Quantity</td>
-                    <td>
-                        <input type="number"
-                               min="0"
-                               max="@value.Quantity"
-                               id="@key"
-                               class="form-control raz">
-                    </td>
+                    <th scope="row">@item.ItemId</th>
+                    <td>@item?.ItemName</td>
+                    <td>@item?.Count</td>
                 </tr>
-            }
+            }}
             </tbody>
         </table>
-        <input type="submit" class="btn btn-success">
     </form>
 </div>
 
 
 @code {
+
     [Parameter]
-    public Order Order { get; set; } = null!;
+    public long OrderId { get; set; }
+
+    private GrpcOrderDto _order = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await _orderService.GetOrderById(OrderId);
+        // Console.WriteLine($@"{result.Items.Count()}");
+        _order = result;
+    }
 
 }

@@ -1,6 +1,6 @@
 ﻿@page "/ItemById/{Id:long}"
 @using ToxiCode.BuyIt.Logistics.Ui.Models
-@using OrdersComponents
+@using Components
 
 
 
@@ -9,7 +9,5 @@
     [Parameter]
     public long Id { get; set; }
 
-    [Parameter]
-    public IDictionary<long, Obertka> Items { get; set; } = Mock.GetItemsMock();
 
 }

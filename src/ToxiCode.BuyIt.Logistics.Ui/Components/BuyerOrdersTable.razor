@@ -1,9 +1,9 @@
-﻿@namespace ToxiCode.BuyIt.Logistics.Ui.Components
 @using ToxiCode.BuyIt.Logistics.Ui.Models
 @using ToxiCode.BuyIt.Logistics.Ui.Services.Abstractions
 @inject IOrderService _orderService;
+@namespace ToxiCode.BuyIt.Logistics.Ui.Components
 
-<h3>Orders Table</h3>
+<h3>@BuyerId Orders Table</h3>
 
 <div>
     <form>
@@ -26,9 +26,6 @@
                         <a href="/OrderById/@order.Id">@order.Id</a>
                     </th>
                     <td>@order.Status</td>
-                    <td>
-                        <a href="/OrdersByBuyerId/@order.BuyerId">@order.BuyerId</a>
-                    </td>
                     <td>@order.CreationDate</td>
                     <td>@order.From</td>
                     <td>@order.To</td>
@@ -39,13 +36,16 @@
     </form>
 </div>
 
-
 @code {
+
+    [Parameter]
+    public string BuyerId { get; set; } = null!;
+
     private IEnumerable<OrderDto> _orders = new List<OrderDto>();
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await _orderService.GetOrders();
+        var result = await _orderService.GetOrderByBuyerId(BuyerId);
         if (result != null)
             _orders = result;
     }
